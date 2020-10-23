@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "805063583522",
+    "firebase_url": "https://eunoia-4ac02.firebaseio.com",
+    "project_id": "eunoia-4ac02",
+    "storage_bucket": "eunoia-4ac02.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:805063583522:android:1cd0a50ffb7f49e8ea677b",
+        "android_client_info": {
+          "package_name": "com.example.eunoia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "805063583522-u008534bkl9s7cfunkuhs0cbadtrltuf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcf15yImIKX2OkORjKnJVCn02I_zZ3TAY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "805063583522-u008534bkl9s7cfunkuhs0cbadtrltuf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
