@@ -7,75 +7,57 @@
     android:background="#EFEFEF">
 
     <ImageView
-        android:id="@+id/logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="155dp"
-        android:layout_marginBottom="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        android:id="@+id/imageView2"
+        android:layout_width="421dp"
+        android:layout_height="194dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/login_email"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.534"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.96"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        app:srcCompat="@drawable/design1" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="280dp"
-        android:layout_marginEnd="177dp"
-        android:layout_marginBottom="480dp"
-        android:fontFamily="@font/inder"
-        android:text="EUNOIA"
-        android:textAlignment="center"
-        android:textColor="#2D366C"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo3" />
 
     <EditText
         android:id="@+id/login_email"
         android:layout_width="300dp"
         android:layout_height="40dp"
-
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="56dp"
         android:background="@drawable/round_text"
         android:drawableLeft="@drawable/user_id"
         android:elevation="5dp"
         android:hint="Name"
         android:paddingLeft="2dp"
-        app:layout_constraintBottom_toTopOf="@+id/login_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <EditText
         android:id="@+id/email"
         android:layout_width="300dp"
         android:layout_height="40dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="56dp"
         android:background="@drawable/round_text"
-        android:ems="10"
         android:drawableLeft="@drawable/ic_baseline_email_24"
         android:elevation="5dp"
-        android:paddingLeft="2dp"
+        android:ems="10"
         android:hint="abc@gmail.com"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/password"
+        android:paddingLeft="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_email" />
@@ -84,17 +66,15 @@
         android:id="@+id/password"
         android:layout_width="300dp"
         android:layout_height="40dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="56dp"
         android:background="@drawable/round_text"
         android:drawableLeft="@drawable/password"
         android:elevation="5dp"
         android:ems="10"
         android:hint="Password"
         android:paddingLeft="2dp"
-        app:layout_constraintBottom_toTopOf="@+id/confirm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email" />
@@ -103,9 +83,9 @@
         android:id="@+id/confirm"
         android:layout_width="300dp"
         android:layout_height="40dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="56dp"
         android:background="@drawable/round_text"
         android:drawableLeft="@drawable/password"
         android:elevation="5dp"
@@ -119,9 +99,9 @@
         android:id="@+id/signupbutton"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="56dp"
         android:background="@drawable/round_button"
         android:fontFamily="@font/inder"
         android:text="SIGN UP"
@@ -134,14 +114,13 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="100dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signupbutton">
-
 
         <TextView
             android:id="@+id/textViewNot"
@@ -155,12 +134,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="Sign In"
+            android:text="login"
             android:textColor="#2D366C"
             android:textSize="18sp" />
-
-
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="194dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/design4" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
