@@ -77,19 +77,22 @@ public class signup extends AppCompatActivity {
                    return;
                }
 
-                fAuth.createUserWithEmailAndPassword(email1, password1).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful()){
-                        Toast.makeText(signup.this, "User Created", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), home.class));
+               if (password1.equals(cnfrm)) {
+                   fAuth.createUserWithEmailAndPassword(email1, password1).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                       @Override
+                       public void onComplete(@NonNull Task<AuthResult> task) {
+                           if (task.isSuccessful()) {
+                               Toast.makeText(signup.this, "User Created", Toast.LENGTH_SHORT).show();
+                               startActivity(new Intent(getApplicationContext(), home.class));
 
-                    }else{
-                        Toast.makeText(signup.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-
+                           } else {
+                               Toast.makeText(signup.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                           }
+                       }
+                   });
+               }else{
+                   confirm.setError("password does not match");
+               }
            }
 
 

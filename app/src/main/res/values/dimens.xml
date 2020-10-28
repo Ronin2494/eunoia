@@ -4,4 +4,11 @@
     <dimen name="card_margin">10dp</dimen>
     <dimen name="button_radius">15dp</dimen>
 
+    <dimen name="text_corner_radius">16dp</dimen>
+    <dimen name="text_margin">10dp</dimen>
+    <dimen name="text_radius">15dp</dimen>
+
+    <dimen name="seek_bar_thickness">10dp</dimen>
+    <dimen name="seek_bar_thumb_size">20dp</dimen>
+
 </resources>
