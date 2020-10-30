@@ -16,7 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class signin extends AppCompatActivity {
+public class login extends AppCompatActivity {
 
     TextView signup;
     TextView email,password;
@@ -66,11 +66,11 @@ public class signin extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(signin.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(login.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), home.class));
 
                         }else{
-                            Toast.makeText(signin.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(login.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -82,7 +82,7 @@ public class signin extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(signin.this, signup.class);
+                Intent i = new Intent(login.this, signup.class);
                 startActivity(i);
 
             }

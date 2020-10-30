@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class signup extends AppCompatActivity {
 
-    TextView signin;
+    TextView login;
     TextView username, email,password, confirm;
     Button signUp;
     FirebaseAuth fAuth;
@@ -28,7 +28,7 @@ public class signup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-       signin = findViewById(R.id.signin);
+       login = findViewById(R.id.login);
        username = findViewById(R.id.login_email);
        password = findViewById(R.id.password);
        confirm = findViewById(R.id.confirm);
@@ -103,10 +103,10 @@ public class signup extends AppCompatActivity {
 
 
 
-       signin.setOnClickListener(new View.OnClickListener() {
+       login.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Intent i = new Intent(signup.this, signin.class);
+               Intent i = new Intent(signup.this, login.class);
                startActivity(i);
 
            }
