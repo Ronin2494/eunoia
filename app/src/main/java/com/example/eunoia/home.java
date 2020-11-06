@@ -126,7 +126,6 @@ public class home extends AppCompatActivity implements PopupMenu.OnMenuItemClick
                 reference.child(time).setValue(feeling1);
                 feel.setText("");
 
-
             }
         });
 
