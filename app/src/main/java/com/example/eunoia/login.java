@@ -66,11 +66,13 @@ public class login extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(login.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
+
+                            Toast.makeText(com.example.eunoia.login.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), home.class));
 
                         }else{
-                            Toast.makeText(login.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(com.example.eunoia.login.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+
                         }
                     }
                 });
@@ -82,7 +84,9 @@ public class login extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(login.this, signup.class);
+
+                Intent i = new Intent(com.example.eunoia.login.this, signup.class);
+
                 startActivity(i);
 
             }

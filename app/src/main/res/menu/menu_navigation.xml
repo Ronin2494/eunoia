@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/homie"
+        android:title="Home"
+        android:icon="@drawable/home" />
+
+    <item
+        android:id="@+id/activity"
+        android:title="Activities"
+        android:icon="@drawable/activities"/>
+
+    <item
+        android:id="@+id/progress"
+        android:title="Progress"
+        android:icon="@drawable/progress"/>
+
+    <item
+        android:id="@+id/message"
+        android:title="Messages"
+        android:icon="@drawable/message"/>
+
+    <item
+        android:id="@+id/doctor"
+        android:title="Doctors"
+        android:icon="@drawable/expert"/>
+
+</menu>
