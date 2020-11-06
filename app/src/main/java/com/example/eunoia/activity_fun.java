@@ -2,70 +2,43 @@ package com.example.eunoia;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
-import android.widget.SeekBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
-import java.text.DateFormat;
-import java.util.Date;
+public class activity_fun extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
-public class home extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
-
-    Button submit;
-    EditText feel;
-    SeekBar seekBar;
-    TextView textView;
-    DatabaseReference reference;
-    usersfeeling feeling1;
+    Button btn1, btn2, btn3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_fun);
 
-        seekBar = findViewById(R.id.seekBar);
-        textView= findViewById(R.id.progressText);
+        btn1 = findViewById(R.id.button2);
+        btn2 = findViewById(R.id.button3);
+        btn3 = findViewById(R.id.button4);
 
 
-        textView.setText(""+seekBar.getProgress());
-
-        //progress bar
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        btn1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                textView.setText(""+progress);
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), breathing.class));
+                finish();
             }
         });
 
 
-        //Bottom Navigation View to switch between activities
         BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.homie);
+        bottomNavigationView.setSelectedItemId(R.id.activity);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -74,12 +47,12 @@ public class home extends AppCompatActivity implements PopupMenu.OnMenuItemClick
 
                 switch (menuItem.getItemId()){
                     case R.id.homie:
-
-                    case R.id.activity:
-                        startActivity(new Intent(getApplicationContext(), activity_fun.class));
+                        startActivity(new Intent(getApplicationContext(), home.class));
                         finish();
                         overridePendingTransition(0,0);
                         return false;
+
+                    case R.id.activity:
 
                     case R.id.progress:
                         startActivity(new Intent(getApplicationContext(), progress.class));
@@ -93,11 +66,13 @@ public class home extends AppCompatActivity implements PopupMenu.OnMenuItemClick
                         overridePendingTransition(0,0);
                         return false;
 
+
                     case R.id.doctor:
                         startActivity(new Intent(getApplicationContext(), home.class));
                         finish();
                         overridePendingTransition(0,0);
                         return false;
+
 
                 }
                 return false;
@@ -105,35 +80,9 @@ public class home extends AppCompatActivity implements PopupMenu.OnMenuItemClick
         });
 
 
-        //Database
-
-        submit = findViewById(R.id.buttonSubmit);
-        feel = findViewById(R.id.enterFeel);
-
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                feeling1 = new usersfeeling();
-                reference = FirebaseDatabase.getInstance().getReference().child("UsersFeeling");
-
-                String description = feel.getEditableText().toString();
-                String time = DateFormat.getDateTimeInstance().format(new Date());
-
-                feeling1 = new usersfeeling(time, description);
-
-                //here time act as a unique key
-                reference.child(time).setValue(feeling1);
-                feel.setText("");
-
-            }
-        });
-
-
 
     }
 
-    //Drop-down pop-up menu
     public void showPopup(View v){
 
         PopupMenu popup = new PopupMenu(this, v);
@@ -169,6 +118,5 @@ public class home extends AppCompatActivity implements PopupMenu.OnMenuItemClick
 
         }
     }
-
 
 }

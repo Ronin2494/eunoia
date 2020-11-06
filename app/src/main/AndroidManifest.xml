@@ -31,6 +31,8 @@
         <activity android:name=".login"></activity>
         <activity android:name=".home"></activity>
         <activity android:name=".progress"></activity>
+        <activity android:name=".activity_fun"></activity>
+        <activity android:name=".breathing"></activity>
     </application>
 
 </manifest>
