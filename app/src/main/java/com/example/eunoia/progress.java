@@ -28,19 +28,20 @@ public class progress extends AppCompatActivity {
 
                 switch (menuItem.getItemId()){
                     case R.id.homie:
+                        startActivity(new Intent(getApplicationContext(), home.class));
+                        finish();
+                        overridePendingTransition(0,0);
+                        return false;
 
                     case R.id.activity:
-                        startActivity(new Intent(getApplicationContext(), home.class));
+                        startActivity(new Intent(getApplicationContext(), activity_fun.class));
                         finish();
                         overridePendingTransition(0,0);
                         return false;
 
 
                     case R.id.progress:
-                        startActivity(new Intent(getApplicationContext(), progress.class));
-                        finish();
-                        overridePendingTransition(0,0);
-                        return false;
+
 
                     case R.id.message:
                         startActivity(new Intent(getApplicationContext(), progress.class));
