@@ -42,41 +42,41 @@ public class login extends AppCompatActivity {
                 String password1 = password.getText().toString().trim();
 
                 //To check if user already existed or not
-                if(fAuth.getCurrentUser() != null){
+                if (fAuth.getCurrentUser() != null) {
                     startActivity(new Intent(getApplicationContext(), home.class));
                     finish();
                 }
 
-                if(TextUtils.isEmpty(email1)){
+                if (TextUtils.isEmpty(email1)) {
                     email.setError("Email is required");
                     return;
                 }
 
-                if(TextUtils.isEmpty(password1)){
+                if (TextUtils.isEmpty(password1)) {
                     password.setError("Password is required");
                     return;
                 }
 
-                if(password1.length() < 6){
+                if (password1.length() < 6) {
                     password.setError("password must be greater than 6 characters");
                     return;
                 }
 
-                fAuth.signInWithEmailAndPassword(email1, password1).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
+                    fAuth.signInWithEmailAndPassword(email1, password1).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(com.example.eunoia.login.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(getApplicationContext(), home.class));
 
-                            Toast.makeText(com.example.eunoia.login.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), home.class));
+                            } else {
+                                Toast.makeText(com.example.eunoia.login.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
 
-                        }else{
-                            Toast.makeText(com.example.eunoia.login.this, "Error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-
+                            }
                         }
-                    }
-                });
-            }
+                    });
+                }
+
         });
 
 

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
@@ -14,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class activity_fun extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+public class activity_fun extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
 
     Button btn1, btn2, btn3;
 
@@ -23,18 +22,21 @@ public class activity_fun extends AppCompatActivity implements PopupMenu.OnMenuI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fun);
 
-        btn1 = findViewById(R.id.button2);
-        btn2 = findViewById(R.id.button3);
-        btn3 = findViewById(R.id.button4);
+        btn1 = findViewById(R.id.btnRoutine);
+        btn2 = findViewById(R.id.btnRelax);
+        btn3 = findViewById(R.id.btnJournal);
 
-
-        btn1.setOnClickListener(new View.OnClickListener() {
+        btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), breathing.class));
+                startActivity(new Intent(getApplicationContext(), activity_relax.class));
                 finish();
             }
         });
+
+
+
+
 
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
@@ -54,6 +56,7 @@ public class activity_fun extends AppCompatActivity implements PopupMenu.OnMenuI
 
                     case R.id.activity:
 
+
                     case R.id.progress:
                         startActivity(new Intent(getApplicationContext(), progress.class));
                         finish();
@@ -66,13 +69,11 @@ public class activity_fun extends AppCompatActivity implements PopupMenu.OnMenuI
                         overridePendingTransition(0,0);
                         return false;
 
-
                     case R.id.doctor:
                         startActivity(new Intent(getApplicationContext(), home.class));
                         finish();
                         overridePendingTransition(0,0);
                         return false;
-
 
                 }
                 return false;
@@ -80,8 +81,9 @@ public class activity_fun extends AppCompatActivity implements PopupMenu.OnMenuI
         });
 
 
-
     }
+
+
 
     public void showPopup(View v){
 
@@ -118,5 +120,4 @@ public class activity_fun extends AppCompatActivity implements PopupMenu.OnMenuI
 
         }
     }
-
 }

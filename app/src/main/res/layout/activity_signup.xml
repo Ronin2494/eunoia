@@ -7,20 +7,18 @@
     android:background="#EFEFEF">
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="421dp"
-        android:layout_height="194dp"
-        android:layout_marginBottom="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/login_email"
+        android:id="@+id/imageView12"
+        android:layout_width="469dp"
+        android:layout_height="185dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/design1" />
+        app:srcCompat="@drawable/design1_2" />
 
     <ImageView
-        android:id="@+id/logo"
-        android:layout_width="300dp"
-        android:layout_height="100dp"
+        android:id="@+id/logo3"
+        android:layout_width="290dp"
+        android:layout_height="95dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -33,7 +31,7 @@
         android:layout_width="300dp"
         android:layout_height="40dp"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="56dp"
         android:background="@drawable/round_text"
         android:drawableLeft="@drawable/user_id"
@@ -42,7 +40,7 @@
         android:paddingLeft="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView12" />
 
     <EditText
         android:id="@+id/email"
