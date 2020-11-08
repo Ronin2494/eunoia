@@ -8,7 +8,9 @@
         android:largeScreens="true"
         android:normalScreens="true"
         android:smallScreens="true"
-        android:xlargeScreens="true"/>
+        android:xlargeScreens="true"
+        android:anyDensity="true"
+        android:resizeable="true"/>
 
     <application
         android:allowBackup="true"
@@ -31,8 +33,10 @@
         <activity android:name=".login"></activity>
         <activity android:name=".home"></activity>
         <activity android:name=".progress"></activity>
-        <activity android:name=".activity_fun"></activity>
+        <activity android:name=".activity_relax"></activity>
         <activity android:name=".breathing"></activity>
+        <activity android:name=".listening"></activity>
+        <activity android:name=".activity_fun"></activity>
     </application>
 
 </manifest>

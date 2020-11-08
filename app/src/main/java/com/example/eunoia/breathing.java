@@ -21,7 +21,7 @@ public class breathing extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), activity_fun.class));
+                startActivity(new Intent(getApplicationContext(), activity_relax.class));
                 finish();
             }
         });
