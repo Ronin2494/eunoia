@@ -34,6 +34,11 @@ public class login extends AppCompatActivity {
         login = findViewById(R.id.loginButton);
 
         fAuth = FirebaseAuth.getInstance();
+        //To check if user already existed or not
+        if (fAuth.getCurrentUser() != null) {
+            startActivity(new Intent(getApplicationContext(), home.class));
+            finish();
+        }
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,11 +46,6 @@ public class login extends AppCompatActivity {
                 String email1 = email.getText().toString().trim();
                 String password1 = password.getText().toString().trim();
 
-                //To check if user already existed or not
-                if (fAuth.getCurrentUser() != null) {
-                    startActivity(new Intent(getApplicationContext(), home.class));
-                    finish();
-                }
 
                 if (TextUtils.isEmpty(email1)) {
                     email.setError("Email is required");

@@ -38,6 +38,7 @@
         <activity android:name=".activity_fun" />
         <activity android:name=".Activity_routinemeals"/>
         <activity android:name=".Activity_routinesleep" />
+        <activity android:name=".activity_journal"></activity>
     </application>
 
 </manifest>
