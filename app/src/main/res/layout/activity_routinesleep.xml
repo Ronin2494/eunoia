@@ -44,6 +44,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView9">
 
         <RadioButton
+            android:id="@+id/less_then_4"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -56,6 +57,7 @@
             android:textColor="@drawable/radio_text" />
 
         <RadioButton
+            android:id="@+id/four_to_six"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -68,6 +70,7 @@
             android:textColor="@drawable/radio_text" />
 
         <RadioButton
+            android:id="@+id/six_to_eight"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -80,6 +83,7 @@
             android:textColor="@drawable/radio_text" />
 
         <RadioButton
+            android:id="@+id/more_then8"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -92,6 +96,7 @@
             android:textColor="@drawable/radio_text" />
 
         <RadioButton
+            android:id="@+id/no_sleep"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
