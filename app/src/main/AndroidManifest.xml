@@ -19,7 +19,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity_routinesleep"></activity>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -36,6 +36,8 @@
         <activity android:name=".breathing" />
         <activity android:name=".listening" />
         <activity android:name=".activity_fun" />
+        <activity android:name=".Activity_routinemeals"/>
+        <activity android:name=".Activity_routinesleep" />
     </application>
 
 </manifest>

@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Sleep hours"
+        android:text="Meals and Snacks"
         android:textAlignment="center"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/radioGroup"
@@ -51,7 +51,7 @@
             android:button="@android:color/transparent"
             android:elevation="5dp"
             android:padding="10dp"
-            android:text="Less than 4 hrs"
+            android:text="Just 1 heavy meal"
             android:textAlignment="center"
             android:textColor="@drawable/radio_text" />
 
@@ -63,7 +63,7 @@
             android:button="@android:color/transparent"
             android:elevation="5dp"
             android:padding="10dp"
-            android:text="4-6 hrs"
+            android:text="Just 2 heavy meal"
             android:textAlignment="center"
             android:textColor="@drawable/radio_text" />
 
@@ -75,7 +75,7 @@
             android:button="@android:color/transparent"
             android:elevation="5dp"
             android:padding="10dp"
-            android:text="6-8 hrs"
+            android:text="Just 3 light meal"
             android:textAlignment="center"
             android:textColor="@drawable/radio_text" />
 
@@ -87,7 +87,7 @@
             android:button="@android:color/transparent"
             android:elevation="5dp"
             android:padding="10dp"
-            android:text="More than 8 hrs"
+            android:text="2 heavy and 1 light meal"
             android:textAlignment="center"
             android:textColor="@drawable/radio_text" />
 
@@ -99,7 +99,7 @@
             android:button="@android:color/transparent"
             android:elevation="5dp"
             android:padding="10dp"
-            android:text="Didn't sleep"
+            android:text="1 heavy and 2 light meal"
             android:textAlignment="center"
             android:textColor="@drawable/radio_text" />
     </RadioGroup>
