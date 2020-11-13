@@ -34,6 +34,14 @@ public class activity_fun extends AppCompatActivity implements PopupMenu.OnMenuI
             }
         });
 
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Activity_routinesleep.class));
+                finish();
+            }
+        });
+
 
 
 
