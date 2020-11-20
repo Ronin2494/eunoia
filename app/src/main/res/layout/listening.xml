@@ -35,6 +35,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
         android:id="@+id/linear1"
         android:layout_width="300dp"
@@ -56,7 +58,7 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:text="Sound1"
-            android:textAlignment="center"
+            android:gravity="center"
             android:textColor="#2D366C"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -102,7 +104,7 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:text="Sound2"
-            android:textAlignment="center"
+            android:gravity="center"
             android:textColor="#2D366C"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -149,7 +151,7 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:text="Sound3"
-            android:textAlignment="center"
+            android:gravity="center"
             android:textColor="#2D366C"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -172,5 +174,19 @@
             android:onClick="play"
             app:srcCompat="@drawable/ic_baseline_play_arrow_24" />
 
+
     </LinearLayout>
+
+
+
+    <ImageView
+        android:id="@+id/imageBkgrnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="194dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/design4" />
 </androidx.constraintlayout.widget.ConstraintLayout>
