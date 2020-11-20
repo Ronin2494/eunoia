@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -29,6 +30,7 @@ public class home extends AppCompatActivity implements PopupMenu.OnMenuItemClick
     TextView textView;
     DatabaseReference reference;
     usersfeeling feeling1;
+    FirebaseAuth fAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class home extends AppCompatActivity implements PopupMenu.OnMenuItemClick
         seekBar = findViewById(R.id.seekBar);
         textView= findViewById(R.id.progressText);
 
+        fAuth = FirebaseAuth.getInstance();
 
         textView.setText(""+seekBar.getProgress());
 
@@ -117,7 +120,7 @@ public class home extends AppCompatActivity implements PopupMenu.OnMenuItemClick
                 String description = feel.getEditableText().toString();
                 String time = DateFormat.getDateTimeInstance().format(new Date());
 
-                feeling1 = new usersfeeling(time, description);
+                feeling1 = new usersfeeling(description, time);
 
                 //here time act as a unique key
                 reference.child(time).setValue(feeling1);
@@ -160,6 +163,11 @@ public class home extends AppCompatActivity implements PopupMenu.OnMenuItemClick
             case R.id.item4:
                 Toast.makeText(this, "Item4 is selected", Toast.LENGTH_SHORT).show();
                 return true;
+
+            case R.id.sign_out:
+                fAuth.signOut();
+                startActivity(new Intent(getApplicationContext(), login.class));
+                finish();
 
             default:
                 return  super.onOptionsItemSelected(item);

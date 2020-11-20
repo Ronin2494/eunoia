@@ -12,15 +12,19 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class activity_fun extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
 
     Button btn1, btn2, btn3;
+    FirebaseAuth fAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fun);
+
+        fAuth = FirebaseAuth.getInstance();
 
         btn1 = findViewById(R.id.btnRoutine);
         btn2 = findViewById(R.id.btnRelax);
@@ -43,6 +47,13 @@ public class activity_fun extends AppCompatActivity implements PopupMenu.OnMenuI
         });
 
 
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), activity_journal.class));
+                finish();
+            }
+        });
 
 
 
@@ -122,6 +133,11 @@ public class activity_fun extends AppCompatActivity implements PopupMenu.OnMenuI
             case R.id.item4:
                 Toast.makeText(this, "Item4 is selected", Toast.LENGTH_SHORT).show();
                 return true;
+
+            case R.id.sign_out:
+                fAuth.signOut();
+                startActivity(new Intent(getApplicationContext(), login.class));
+                finish();
 
             default:
                 return  super.onOptionsItemSelected(item);
