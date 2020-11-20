@@ -7,6 +7,7 @@
     android:background="#EFEFEF">
 
 
+
     <ImageView
         android:id="@+id/backArrow"
         android:layout_width="wrap_content"
@@ -17,17 +18,25 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
 
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="469dp"
+        android:layout_height="185dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/design1_2" />
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="160dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="220dp"
         android:fontFamily="@font/inder"
         android:text="Relax"
         android:textAlignment="center"
-        android:textColor="#2D366C"
+        android:textColor="#F1DE7A"
         android:textSize="46sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,6 +94,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button3" />
+
+    <ImageView
+        android:id="@+id/imageBkgrnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="194dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/design4" />
 
 
 

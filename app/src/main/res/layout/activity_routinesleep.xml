@@ -29,9 +29,7 @@
         android:fontFamily="@font/inder"
         android:text="Routine"
         android:textAlignment="center"
-        android:textColor="#2D366C"
-        android:textSize="50dp"
-        android:textStyle="bold"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -45,8 +43,7 @@
         android:layout_marginEnd="10dp"
         android:text="Sleep hours"
         android:textAlignment="center"
-        android:textColor="#2D366C"
-        android:textSize="20dp"
+
         app:layout_constraintBottom_toTopOf="@+id/radioGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
