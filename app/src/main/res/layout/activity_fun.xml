@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
-        android:layout_marginEnd="220dp"
+        android:layout_marginEnd="200dp"
         android:fontFamily="@font/inder"
         android:text="Activities"
         android:textColor="#F1DE7A"

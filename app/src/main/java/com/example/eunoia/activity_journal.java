@@ -18,7 +18,7 @@ import java.util.Date;
 
 public class activity_journal extends AppCompatActivity {
 
-    Button btnSubmit;
+    Button btnSubmit, list;
     ImageView img;
     DatabaseReference ref;
     EditText feel;
@@ -31,6 +31,7 @@ public class activity_journal extends AppCompatActivity {
 
         img = findViewById(R.id.backArrow);
 
+
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,13 +41,11 @@ public class activity_journal extends AppCompatActivity {
 
         btnSubmit = findViewById(R.id.buttonSubmit);
 
-
         feel = findViewById(R.id.enterFeel);
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
                 ref = FirebaseDatabase.getInstance().getReference().child("UsersJournal");
                 journal = new usersjournal();
@@ -61,6 +60,16 @@ public class activity_journal extends AppCompatActivity {
                 feel.setText("");
 
 
+            }
+        });
+
+        //to view journal data list
+        list = findViewById(R.id.journal_list);
+        list.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), activity_journal_2.class));
+                finish();
             }
         });
 
