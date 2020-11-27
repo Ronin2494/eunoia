@@ -1,13 +1,11 @@
 package com.example.eunoia;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.PopupMenu;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class progress extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
+public class pageFragment extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
 
     FirebaseAuth fAuth;
     float x1, x2, y1, y2;
@@ -24,8 +22,7 @@ public class progress extends AppCompatActivity implements PopupMenu.OnMenuItemC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.progress);
-
+        setContentView(R.layout.page_fragment);
         fAuth = FirebaseAuth.getInstance();
 
 
@@ -127,8 +124,8 @@ public class progress extends AppCompatActivity implements PopupMenu.OnMenuItemC
                 x2 = event.getX();
                 y2 = event.getY();
 
-                if(x1 > x2){
-                    Intent i = new Intent(progress.this, pageFragment.class);
+                if(x1 < x2){
+                    Intent i = new Intent(pageFragment.this, progress.class);
                     startActivity(i);
                 }
                 break;
@@ -139,3 +136,4 @@ public class progress extends AppCompatActivity implements PopupMenu.OnMenuItemC
 
 
 }
+

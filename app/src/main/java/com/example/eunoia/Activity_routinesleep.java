@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -43,21 +44,21 @@ public class Activity_routinesleep extends AppCompatActivity {
         });
 
 
-        first=findViewById(R.id.less_then_4);
-        second=findViewById(R.id.four_to_six);
-        third=findViewById(R.id.six_to_eight);
-        fourth=findViewById(R.id.more_then8);
-        fifth=findViewById(R.id.no_sleep);
+        first = findViewById(R.id.less_then_4);
+        second = findViewById(R.id.four_to_six);
+        third = findViewById(R.id.six_to_eight);
+        fourth = findViewById(R.id.more_then8);
+        fifth = findViewById(R.id.no_sleep);
 
-        ref = database.getInstance().getReference().child("user");
+        ref = database.getInstance().getReference().child("UserSleep");
         hr = new sleepHours();
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                if(snapshot.exists()){
-                    i=(int)snapshot.getChildrenCount();
+                if (snapshot.exists()) {
+                    i = (int) snapshot.getChildrenCount();
                 }
             }
 
@@ -73,41 +74,35 @@ public class Activity_routinesleep extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                String sh1= first.getText().toString();
-                String sh2= second.getText().toString();
-                String sh3= third.getText().toString();
-                String sh4= fourth.getText().toString();
-                String sh5= fifth.getText().toString();
+                String sh1 = first.getText().toString();
+                String sh2 = second.getText().toString();
+                String sh3 = third.getText().toString();
+                String sh4 = fourth.getText().toString();
+                String sh5 = fifth.getText().toString();
 
-                if(first.isChecked()){
+                if (first.isChecked()) {
                     hr.setHours(sh1);
-                    ref.child(String.valueOf(i+1)).setValue(hr);
-                }
-                else if(second.isChecked()){
+                    ref.child(String.valueOf(i + 1)).setValue(hr);
+                } else if (second.isChecked()) {
                     hr.setHours(sh2);
-                    ref.child(String.valueOf(i+1)).setValue(hr);
-                }
-                else if(third.isChecked()){
+                    ref.child(String.valueOf(i + 1)).setValue(hr);
+                } else if (third.isChecked()) {
                     hr.setHours(sh3);
-                    ref.child(String.valueOf(i+1)).setValue(hr);
-                }
-                else if(fourth.isChecked()){
+                    ref.child(String.valueOf(i + 1)).setValue(hr);
+                } else if (fourth.isChecked()) {
                     hr.setHours(sh4);
-                    ref.child(String.valueOf(i+1)).setValue(hr);
-                }
-                else {
+                    ref.child(String.valueOf(i + 1)).setValue(hr);
+                } else {
                     hr.setHours(sh5);
-                    ref.child(String.valueOf(i+1)).setValue(hr);
+                    ref.child(String.valueOf(i + 1)).setValue(hr);
+
+
                 }
-
-
-
                 startActivity(new Intent(getApplicationContext(), Activity_routinemeals.class));
                 finish();
             }
+
+
         });
-
-
-
     }
 }
