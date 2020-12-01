@@ -23,14 +23,19 @@ public class activity_journal extends AppCompatActivity {
     DatabaseReference ref;
     EditText feel;
     usersjournal journal;
+    FirebaseAuth fAuth;
+    private String currentUserId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_journal);
 
-        img = findViewById(R.id.backArrow);
+        fAuth = FirebaseAuth.getInstance();
+        currentUserId = fAuth.getCurrentUser().getUid();
 
+
+        img = findViewById(R.id.backArrow);
 
         img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,20 +48,22 @@ public class activity_journal extends AppCompatActivity {
 
         feel = findViewById(R.id.enterFeel);
 
+        ref = FirebaseDatabase.getInstance().getReference("users_data").child(currentUserId);
+
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                ref = FirebaseDatabase.getInstance().getReference().child("UsersJournal");
+
                 journal = new usersjournal();
 
                 String description = feel.getEditableText().toString();
                 String time = DateFormat.getDateTimeInstance().format(new Date());
 
-                journal = new usersjournal(description, time);
+                journal = new usersjournal(description);
 
                 //here time act as a unique key
-                ref.child(time).setValue(journal);
+                ref.child("Users_Journal").child(time).setValue(journal);
                 feel.setText("");
 
 

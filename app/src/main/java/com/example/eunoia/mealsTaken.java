@@ -6,11 +6,11 @@ public class mealsTaken {
 
     public mealsTaken() {}
 
-    public String getHours() {
+    public String getMeals() {
         return Meals;
     }
 
-    public void setHours(String meals) {
+    public void setMeals(String meals) {
         Meals = meals;
     }
 }

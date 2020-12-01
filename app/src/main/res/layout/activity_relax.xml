@@ -7,6 +7,14 @@
     android:background="#EFEFEF">
 
 
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="469dp"
+        android:layout_height="185dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/design1_2" />
 
     <ImageView
         android:id="@+id/backArrow"
@@ -16,16 +24,7 @@
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
-
-    <ImageView
-        android:id="@+id/imageView12"
-        android:layout_width="469dp"
-        android:layout_height="185dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/design1_2" />
+        app:srcCompat="@drawable/ic_baseline_arrow_back_2" />
 
     <TextView
         android:id="@+id/textView3"
@@ -59,7 +58,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView12" />
 
     <Button
         android:id="@+id/button3"

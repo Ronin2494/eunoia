@@ -15,6 +15,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class signup extends AppCompatActivity {
 
@@ -22,6 +25,8 @@ public class signup extends AppCompatActivity {
     TextView username, email,password, confirm;
     Button signUp;
     FirebaseAuth fAuth;
+    DatabaseReference ref;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,16 +45,20 @@ public class signup extends AppCompatActivity {
        signUp.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               String email1 = email.getText().toString().trim();
-               String password1 = password.getText().toString().trim();
-               String name = username.getText().toString().trim();
-               String cnfrm = confirm.getText().toString().trim();
+               final String email1 = email.getText().toString().trim();
+               final String password1 = password.getText().toString().trim();
+               final String name = username.getText().toString().trim();
+               final String cnfrm = confirm.getText().toString().trim();
+
+               user = fAuth.getCurrentUser();
 
                //To check if user already existed or not
-               if(fAuth.getCurrentUser() != null){
+               if(user != null){
                    startActivity(new Intent(getApplicationContext(), home.class));
                    finish();
                }
+
+               ref = FirebaseDatabase.getInstance().getReference("users_data");
 
 
                if(TextUtils.isEmpty(name)){
@@ -78,11 +87,26 @@ public class signup extends AppCompatActivity {
                }
 
                if (password1.equals(cnfrm)) {
-                   fAuth.createUserWithEmailAndPassword(email1, password1).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                   //authentication with respect to email and password
+                   fAuth.createUserWithEmailAndPassword(email1, password1).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
                        @Override
                        public void onComplete(@NonNull Task<AuthResult> task) {
                            if (task.isSuccessful()) {
-                               Toast.makeText(signup.this, "User Created", Toast.LENGTH_SHORT).show();
+                               //to  store user info in real-time database as authentication only
+                               // stores email and password and it creates a UID for each user automatically
+                               users u1 = new users(name, email1, password1, cnfrm);
+                               ref.child(fAuth.getCurrentUser().getUid()).child("user_info").setValue(u1).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                   @Override
+                                   public void onComplete(@NonNull Task<Void> task) {
+                                       if (task.isSuccessful()) {
+                                           Toast.makeText(signup.this, "Database Saved successfully", Toast.LENGTH_SHORT).show();
+                                       }
+                                       else{
+                                           Toast.makeText(signup.this, "Database not Saved", Toast.LENGTH_SHORT).show();
+                                       }
+                                   }
+                               });
+                               //Toast.makeText(signup.this, "User Created", Toast.LENGTH_SHORT).show();
                                startActivity(new Intent(getApplicationContext(), home.class));
 
                            } else {
@@ -95,12 +119,7 @@ public class signup extends AppCompatActivity {
                }
            }
 
-
-
        });
-
-
-
 
 
        login.setOnClickListener(new View.OnClickListener() {
