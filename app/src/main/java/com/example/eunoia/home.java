@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -31,6 +32,7 @@ public class home extends AppCompatActivity implements PopupMenu.OnMenuItemClick
     DatabaseReference reference;
     usersfeeling feeling1;
     FirebaseAuth fAuth;
+    private String currentUserId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,7 @@ public class home extends AppCompatActivity implements PopupMenu.OnMenuItemClick
         textView= findViewById(R.id.progressText);
 
         fAuth = FirebaseAuth.getInstance();
+        currentUserId = fAuth.getCurrentUser().getUid();// for current user id
 
         textView.setText(""+seekBar.getProgress());
 
@@ -106,6 +109,8 @@ public class home extends AppCompatActivity implements PopupMenu.OnMenuItemClick
 
 
         //Database
+        //getReference is used to set path
+        reference = FirebaseDatabase.getInstance().getReference("users_data").child(currentUserId);
 
         submit = findViewById(R.id.buttonSubmit);
         feel = findViewById(R.id.enterFeel);
@@ -114,16 +119,14 @@ public class home extends AppCompatActivity implements PopupMenu.OnMenuItemClick
             @Override
             public void onClick(View v) {
 
-                feeling1 = new usersfeeling();
-                reference = FirebaseDatabase.getInstance().getReference().child("UsersFeeling");
+                feeling1 = new usersfeeling();//object of the class usersfeeling
 
                 String description = feel.getEditableText().toString();
                 String time = DateFormat.getDateTimeInstance().format(new Date());
 
-                feeling1 = new usersfeeling(description, time);
+                feeling1 = new usersfeeling(description);//passing value to feeling1
 
-                //here time act as a unique key
-                reference.child(time).setValue(feeling1);
+                reference.child("Users_Feeling").child(time).setValue(feeling1);
                 feel.setText("");
 
             }

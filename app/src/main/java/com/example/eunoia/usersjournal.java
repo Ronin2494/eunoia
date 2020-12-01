@@ -2,17 +2,18 @@ package com.example.eunoia;
 
 public class usersjournal {
 
+//It is used to fetch data from database for journal activity
 
     private String journal;
-    private  String time;
+    //private  String time;
 
 
     public usersjournal() {
     }
 
-    public usersjournal(String journal, String time) {
+    public usersjournal(String journal) {
         this.journal = journal;
-        this.time = time;
+        //this.time = time;
     }
 
     public String getJournal() {
@@ -23,11 +24,5 @@ public class usersjournal {
         this.journal = journal;
     }
 
-    public String getTime() {
-        return time;
-    }
 
-    public void setTime(String time) {
-        this.time = time;
-    }
 }

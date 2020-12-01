@@ -11,18 +11,23 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.util.Date;
+
 public class Activity_routinemeals extends AppCompatActivity {
 
     Button btn1;
     ImageView img;
+    FirebaseAuth fAuth;
+    private String currentUserId;
     RadioButton first,second,third,fourth,fifth;
-    FirebaseDatabase database1;
     DatabaseReference ref1;
     mealsTaken mt;
     int i=0;
@@ -31,6 +36,9 @@ public class Activity_routinemeals extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_routinemeals);
+
+        fAuth = FirebaseAuth.getInstance();
+        currentUserId = fAuth.getCurrentUser().getUid();
 
         btn1 = findViewById(R.id.button_submit);
 
@@ -48,8 +56,9 @@ public class Activity_routinemeals extends AppCompatActivity {
         fourth = findViewById(R.id.just_2_1);
         fifth = findViewById(R.id.just_1_2);
 
-        ref1 = database1.getInstance().getReference().child("UserMeals");
-        mt = new mealsTaken();
+        ref1 = FirebaseDatabase.getInstance().getReference("users_data").child(currentUserId);
+        //ref1 = FirebaseDatabase.getInstance().getReference().child("UserMeals");
+
 
         ref1.addValueEventListener(new ValueEventListener() {
             @Override
@@ -70,27 +79,31 @@ public class Activity_routinemeals extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                mt = new mealsTaken();
+
                 String sh1 = first.getText().toString();
                 String sh2 = second.getText().toString();
                 String sh3 = third.getText().toString();
                 String sh4 = fourth.getText().toString();
                 String sh5 = fifth.getText().toString();
 
+                String time = DateFormat.getDateTimeInstance().format(new Date());
+
                 if (first.isChecked()) {
-                    mt.setHours(sh1);
-                    ref1.child(String.valueOf(i + 1)).setValue(mt);
+                    mt.setMeals(sh1);
+                    ref1.child("User_Meals").child(time).setValue(mt);
                 } else if (second.isChecked()) {
-                    mt.setHours(sh2);
-                    ref1.child(String.valueOf(i + 1)).setValue(mt);
+                    mt.setMeals(sh2);
+                    ref1.child("User_Meals").child(time).setValue(mt);
                 } else if (third.isChecked()) {
-                    mt.setHours(sh3);
-                    ref1.child(String.valueOf(i + 1)).setValue(mt);
+                    mt.setMeals(sh3);
+                    ref1.child("User_Meals").child(time).setValue(mt);
                 } else if (fourth.isChecked()) {
-                    mt.setHours(sh4);
-                    ref1.child(String.valueOf(i + 1)).setValue(mt);
+                    mt.setMeals(sh4);
+                    ref1.child("User_Meals").child(time).setValue(mt);
                 } else  {
-                    mt.setHours(sh5);
-                    ref1.child(String.valueOf(i + 1)).setValue(mt);
+                    mt.setMeals(sh5);
+                    ref1.child("User_Meals").child(time).setValue(mt);
 
 
                 }

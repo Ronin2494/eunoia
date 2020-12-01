@@ -11,16 +11,22 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.util.Date;
+
 public class Activity_routinesleep extends AppCompatActivity {
 
     Button btn1;
     ImageView img;
+    FirebaseAuth fAuth;
+    private String currentUserId;
     RadioButton first,second,third,fourth,fifth;
     FirebaseDatabase database;
     DatabaseReference ref;
@@ -31,6 +37,9 @@ public class Activity_routinesleep extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_routinesleep);
+
+        fAuth = FirebaseAuth.getInstance();
+        currentUserId = fAuth.getCurrentUser().getUid();
 
         btn1 = findViewById(R.id.button_submit);
 
@@ -50,7 +59,7 @@ public class Activity_routinesleep extends AppCompatActivity {
         fourth = findViewById(R.id.more_then8);
         fifth = findViewById(R.id.no_sleep);
 
-        ref = database.getInstance().getReference().child("UserSleep");
+        ref = FirebaseDatabase.getInstance().getReference("users_data").child(currentUserId);
         hr = new sleepHours();
 
         ref.addValueEventListener(new ValueEventListener() {
@@ -80,21 +89,23 @@ public class Activity_routinesleep extends AppCompatActivity {
                 String sh4 = fourth.getText().toString();
                 String sh5 = fifth.getText().toString();
 
+                String time = DateFormat.getDateTimeInstance().format(new Date());
+
                 if (first.isChecked()) {
                     hr.setHours(sh1);
-                    ref.child(String.valueOf(i + 1)).setValue(hr);
+                    ref.child("Users_Sleep").child(time).setValue(hr);
                 } else if (second.isChecked()) {
                     hr.setHours(sh2);
-                    ref.child(String.valueOf(i + 1)).setValue(hr);
+                    ref.child("Users_Sleep").child(time).setValue(hr);
                 } else if (third.isChecked()) {
                     hr.setHours(sh3);
-                    ref.child(String.valueOf(i + 1)).setValue(hr);
+                    ref.child("Users_Sleep").child(time).setValue(hr);
                 } else if (fourth.isChecked()) {
                     hr.setHours(sh4);
-                    ref.child(String.valueOf(i + 1)).setValue(hr);
+                    ref.child("Users_Sleep").child(time).setValue(hr);
                 } else {
                     hr.setHours(sh5);
-                    ref.child(String.valueOf(i + 1)).setValue(hr);
+                    ref.child("Users_Sleep").child(time).setValue(hr);
 
 
                 }
