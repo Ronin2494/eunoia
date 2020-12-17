@@ -2,13 +2,17 @@ package com.example.eunoia;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -33,7 +37,6 @@ public class activity_journal extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
         currentUserId = fAuth.getCurrentUser().getUid();
-
 
         img = findViewById(R.id.backArrow);
 
@@ -63,8 +66,9 @@ public class activity_journal extends AppCompatActivity {
                 journal = new usersjournal(description);
 
                 //here time act as a unique key
-                ref.child("Users_Journal").child(time).setValue(journal);
+                ref.child("Users_Journal").push().setValue(journal);
                 feel.setText("");
+                Toast.makeText(activity_journal.this, "Message Submitted", Toast.LENGTH_SHORT).show();
 
 
             }
@@ -80,6 +84,48 @@ public class activity_journal extends AppCompatActivity {
             }
         });
 
+
+
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.activity);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+
+                switch (menuItem.getItemId()){
+                    case R.id.homie:
+                        startActivity(new Intent(getApplicationContext(), home.class));
+                        finish();
+                        overridePendingTransition(0,0);
+                        return false;
+
+                    case R.id.activity:
+                        break;
+
+                    case R.id.progress:
+                        startActivity(new Intent(getApplicationContext(), progress.class));
+                        finish();
+                        overridePendingTransition(0,0);
+                        return false;
+
+                    case R.id.message:
+                        startActivity(new Intent(getApplicationContext(), progress.class));
+                        finish();
+                        overridePendingTransition(0,0);
+                        return false;
+
+                    case R.id.doctor:
+                        startActivity(new Intent(getApplicationContext(), expert.class));
+                        finish();
+                        overridePendingTransition(0,0);
+                        return false;
+
+                }
+                return false;
+            }
+        });
 
     }
 }

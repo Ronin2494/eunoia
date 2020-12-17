@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/profileCard"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="20sp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="400sp">
+
+
+            <ImageView
+                android:id="@+id/profileImage"
+                android:layout_width="match_parent"
+                android:layout_height="265sp"
+                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+            <TextView
+                android:id="@+id/drFirstName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/profileImage"
+                android:layout_marginTop="10sp"
+                android:fontFamily="@font/inder"
+                android:text="Dr. Jordan"
+                android:textAlignment="center"
+                android:textColor="#2D366C"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/drlastName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/drFirstName"
+                android:layout_marginTop="5sp"
+                android:fontFamily="@font/inder"
+                android:text="Gilbert"
+                android:textAlignment="center"
+                android:textColor="#2D366C"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/drCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/drlastName"
+                android:layout_marginTop="5sp"
+                android:fontFamily="@font/inder"
+                android:text="Waterloo, On"
+                android:textAlignment="center"
+                android:textColor="#2D366C"
+                android:textSize="24sp" />
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/visit"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="121sp"
+        android:layout_marginTop="20sp"
+        android:layout_marginEnd="122sp"
+        android:background="@drawable/round_button"
+        android:fontFamily="@font/inder"
+        android:text="View Profile"
+        android:textColor="#fff"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileCard" />
+
+</LinearLayout>

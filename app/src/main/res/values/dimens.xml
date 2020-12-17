@@ -11,4 +11,6 @@
     <dimen name="seek_bar_thickness">10dp</dimen>
     <dimen name="seek_bar_thumb_size">20dp</dimen>
 
+    <dimen name="seek_bar_thickness2">5dp</dimen>
+
 </resources>

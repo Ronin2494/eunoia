@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -39,6 +41,8 @@ public class Activity_routinemeals extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
         currentUserId = fAuth.getCurrentUser().getUid();
+
+        Toast.makeText(Activity_routinemeals.this, "Please Select an option!", Toast.LENGTH_SHORT).show();
 
         btn1 = findViewById(R.id.button_submit);
 
@@ -89,30 +93,75 @@ public class Activity_routinemeals extends AppCompatActivity {
 
                 String time = DateFormat.getDateTimeInstance().format(new Date());
 
+
+
                 if (first.isChecked()) {
-                    mt.setMeals(sh1);
-                    ref1.child("User_Meals").child(time).setValue(mt);
+                    mt = new mealsTaken(sh1,time);
+                    ref1.child("User_Meals").push().setValue(mt);
                 } else if (second.isChecked()) {
-                    mt.setMeals(sh2);
-                    ref1.child("User_Meals").child(time).setValue(mt);
+                    mt = new mealsTaken(sh2,time);
+                    ref1.child("User_Meals").push().setValue(mt);
                 } else if (third.isChecked()) {
-                    mt.setMeals(sh3);
-                    ref1.child("User_Meals").child(time).setValue(mt);
+                    mt = new mealsTaken(sh3,time);
+                    ref1.child("User_Meals").push().setValue(mt);
                 } else if (fourth.isChecked()) {
-                    mt.setMeals(sh4);
-                    ref1.child("User_Meals").child(time).setValue(mt);
+                    mt = new mealsTaken(sh4,time);
+                    ref1.child("User_Meals").push().setValue(mt);
                 } else  {
-                    mt.setMeals(sh5);
-                    ref1.child("User_Meals").child(time).setValue(mt);
+                    mt = new mealsTaken(sh5,time);
+                    ref1.child("User_Meals").push().setValue(mt);
 
 
                 }
+                Toast.makeText(Activity_routinemeals.this, "Submitted", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(), activity_fun.class));
                 finish();
             }
 
 
         });
+
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.activity);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+
+                switch (menuItem.getItemId()){
+                    case R.id.homie:
+                        startActivity(new Intent(getApplicationContext(), home.class));
+                        finish();
+                        overridePendingTransition(0,0);
+                        return false;
+
+                    case R.id.activity:
+                        break;
+
+                    case R.id.progress:
+                        startActivity(new Intent(getApplicationContext(), progress.class));
+                        finish();
+                        overridePendingTransition(0,0);
+                        return false;
+
+                    case R.id.message:
+                        startActivity(new Intent(getApplicationContext(), progress.class));
+                        finish();
+                        overridePendingTransition(0,0);
+                        return false;
+
+                    case R.id.doctor:
+                        startActivity(new Intent(getApplicationContext(), expert.class));
+                        finish();
+                        overridePendingTransition(0,0);
+                        return false;
+
+                }
+                return false;
+            }
+        });
+
     }
 
 }

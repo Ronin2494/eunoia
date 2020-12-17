@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,6 +34,7 @@ public class Activity_routinesleep extends AppCompatActivity {
     DatabaseReference ref;
     sleepHours hr;
     int i=0;
+    int count1, count2, count3, count4, count5 ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,8 @@ public class Activity_routinesleep extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
         currentUserId = fAuth.getCurrentUser().getUid();
+
+        Toast.makeText(Activity_routinesleep.this, "Please Select an option!", Toast.LENGTH_SHORT).show();
 
         btn1 = findViewById(R.id.button_submit);
 
@@ -60,7 +65,7 @@ public class Activity_routinesleep extends AppCompatActivity {
         fifth = findViewById(R.id.no_sleep);
 
         ref = FirebaseDatabase.getInstance().getReference("users_data").child(currentUserId);
-        hr = new sleepHours();
+
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -82,6 +87,7 @@ public class Activity_routinesleep extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                hr = new sleepHours();
 
                 String sh1 = first.getText().toString();
                 String sh2 = second.getText().toString();
@@ -92,28 +98,72 @@ public class Activity_routinesleep extends AppCompatActivity {
                 String time = DateFormat.getDateTimeInstance().format(new Date());
 
                 if (first.isChecked()) {
-                    hr.setHours(sh1);
-                    ref.child("Users_Sleep").child(time).setValue(hr);
+                    hr= new sleepHours(sh1, time);
+                    ref.child("Users_Sleep").push().setValue(hr);
                 } else if (second.isChecked()) {
-                    hr.setHours(sh2);
-                    ref.child("Users_Sleep").child(time).setValue(hr);
+                    hr= new sleepHours(sh2, time);
+                    ref.child("Users_Sleep").push().setValue(hr);
                 } else if (third.isChecked()) {
-                    hr.setHours(sh3);
-                    ref.child("Users_Sleep").child(time).setValue(hr);
+                    hr= new sleepHours(sh3, time);
+                    ref.child("Users_Sleep").push().setValue(hr);
                 } else if (fourth.isChecked()) {
-                    hr.setHours(sh4);
-                    ref.child("Users_Sleep").child(time).setValue(hr);
+                    hr= new sleepHours(sh4, time);
+                    ref.child("Users_Sleep").push().setValue(hr);
                 } else {
-                    hr.setHours(sh5);
-                    ref.child("Users_Sleep").child(time).setValue(hr);
+                    hr= new sleepHours(sh5, time);
+                    ref.child("Users_Sleep").push().setValue(hr);
 
 
                 }
+                Toast.makeText(Activity_routinesleep.this, "Submitted", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(), Activity_routinemeals.class));
                 finish();
             }
 
 
         });
+
+
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.activity);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+
+                switch (menuItem.getItemId()){
+                    case R.id.homie:
+                        startActivity(new Intent(getApplicationContext(), home.class));
+                        finish();
+                        overridePendingTransition(0,0);
+                        return false;
+
+                    case R.id.activity:
+                        break;
+
+                    case R.id.progress:
+                        startActivity(new Intent(getApplicationContext(), progress.class));
+                        finish();
+                        overridePendingTransition(0,0);
+                        return false;
+
+                    case R.id.message:
+                        startActivity(new Intent(getApplicationContext(), progress.class));
+                        finish();
+                        overridePendingTransition(0,0);
+                        return false;
+
+                    case R.id.doctor:
+                        startActivity(new Intent(getApplicationContext(), expert.class));
+                        finish();
+                        overridePendingTransition(0,0);
+                        return false;
+
+                }
+                return false;
+            }
+        });
+
     }
 }

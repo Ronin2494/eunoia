@@ -55,6 +55,48 @@ public class activity_relax extends AppCompatActivity {
         });
 
 
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.activity);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+
+                switch (menuItem.getItemId()){
+                    case R.id.homie:
+                        startActivity(new Intent(getApplicationContext(), home.class));
+                        finish();
+                        overridePendingTransition(0,0);
+                        return false;
+
+                    case R.id.activity:
+                        break;
+
+                    case R.id.progress:
+                        startActivity(new Intent(getApplicationContext(), progress.class));
+                        finish();
+                        overridePendingTransition(0,0);
+                        return false;
+
+                    case R.id.message:
+                        startActivity(new Intent(getApplicationContext(), progress.class));
+                        finish();
+                        overridePendingTransition(0,0);
+                        return false;
+
+                    case R.id.doctor:
+                        startActivity(new Intent(getApplicationContext(), expert.class));
+                        finish();
+                        overridePendingTransition(0,0);
+                        return false;
+
+                }
+                return false;
+            }
+        });
+
+
     }
 
 

@@ -1,6 +1,9 @@
 package com.example.eunoia;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,12 +18,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class home extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
@@ -33,11 +39,14 @@ public class home extends AppCompatActivity implements PopupMenu.OnMenuItemClick
     usersfeeling feeling1;
     FirebaseAuth fAuth;
     private String currentUserId;
+    Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        FirebaseApp.initializeApp(this);
+
 
         seekBar = findViewById(R.id.seekBar);
         textView= findViewById(R.id.progressText);
@@ -77,6 +86,7 @@ public class home extends AppCompatActivity implements PopupMenu.OnMenuItemClick
 
                 switch (menuItem.getItemId()){
                     case R.id.homie:
+                        break;
 
                     case R.id.activity:
                         startActivity(new Intent(getApplicationContext(), activity_fun.class));
@@ -97,7 +107,7 @@ public class home extends AppCompatActivity implements PopupMenu.OnMenuItemClick
                         return false;
 
                     case R.id.doctor:
-                        startActivity(new Intent(getApplicationContext(), home.class));
+                        startActivity(new Intent(getApplicationContext(), expert.class));
                         finish();
                         overridePendingTransition(0,0);
                         return false;
@@ -115,6 +125,7 @@ public class home extends AppCompatActivity implements PopupMenu.OnMenuItemClick
         submit = findViewById(R.id.buttonSubmit);
         feel = findViewById(R.id.enterFeel);
 
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,11 +134,13 @@ public class home extends AppCompatActivity implements PopupMenu.OnMenuItemClick
 
                 String description = feel.getEditableText().toString();
                 String time = DateFormat.getDateTimeInstance().format(new Date());
+                //String time2 = time1.replace(",", " ");
+                //String time = time2.replace(":", " ");
 
-                feeling1 = new usersfeeling(description);//passing value to feeling1
-
-                reference.child("Users_Feeling").child(time).setValue(feeling1);
+                feeling1 = new usersfeeling(description, time);//passing value to feeling1
+                reference.child("Users_Feeling").push().setValue(feeling1);
                 feel.setText("");
+                Toast.makeText(home.this, "Message Submitted", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -135,6 +148,8 @@ public class home extends AppCompatActivity implements PopupMenu.OnMenuItemClick
 
 
     }
+
+
 
     //Drop-down pop-up menu
     public void showPopup(View v){
@@ -155,16 +170,7 @@ public class home extends AppCompatActivity implements PopupMenu.OnMenuItemClick
                 return true;
 
             case R.id.item2:
-                startActivity(new Intent(getApplicationContext(), progress.class));
-                Toast.makeText(this, "Item2 is selected", Toast.LENGTH_SHORT).show();
-                return true;
-
-            case R.id.item3:
-                Toast.makeText(this, "Item3 is selected", Toast.LENGTH_SHORT).show();
-                return true;
-
-            case R.id.item4:
-                Toast.makeText(this, "Item4 is selected", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), userProfile.class));
                 return true;
 
             case R.id.sign_out:

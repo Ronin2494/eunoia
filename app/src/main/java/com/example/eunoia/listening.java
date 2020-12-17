@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class listening extends AppCompatActivity {
 
@@ -24,6 +26,7 @@ public class listening extends AppCompatActivity {
         imageView3 = findViewById(R.id.imageView7);
         imageView4 = findViewById(R.id.imageView8);
 
+
         backArrow = findViewById(R.id.backArrow);
         backArrow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,10 +35,11 @@ public class listening extends AppCompatActivity {
             }
         });
 
+
     }
 
-    public void play(View v){
-        if(player == null){
+    public void play(View v) {
+        if (player == null) {
             player = MediaPlayer.create(this, R.raw.meditation1);
             player = MediaPlayer.create(this, R.raw.meditation2);
             player = MediaPlayer.create(this, R.raw.meditation_3);
@@ -45,8 +49,8 @@ public class listening extends AppCompatActivity {
 
     }
 
-    public void pause(View v){
-        if(player != null){
+    public void pause(View v) {
+        if (player != null) {
             player.pause();
         }
     }

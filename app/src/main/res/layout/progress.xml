@@ -8,12 +8,13 @@
 
     <ImageView
         android:id="@+id/imageView12"
-        android:layout_width="469dp"
-        android:layout_height="185dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/design1_2" />
+        app:srcCompat="@drawable/design1" />
 
     <ImageView
         android:id="@+id/menu-down"
@@ -60,11 +61,11 @@
 
     <LinearLayout
         android:id="@+id/linearlayout1"
-        android:layout_width="400dp"
+        android:layout_width="350dp"
         android:layout_height="40dp"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="6dp"
+        android:layout_marginEnd="31dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,7 +76,7 @@
             android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:text="2-4 Hrs"
             android:textColor="#2D366C"
             android:textSize="18sp"
@@ -85,20 +86,21 @@
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="250dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
+
             android:minHeight="20dp"
-            android:progress="30"/>
+            android:progress="30" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearlayout2"
-        android:layout_width="400dp"
+        android:layout_width="350dp"
         android:layout_height="40dp"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="6dp"
+        android:layout_marginEnd="31dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -109,7 +111,7 @@
             android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:text="4-6 Hrs"
             android:textColor="#2D366C"
             android:textSize="18sp"
@@ -121,18 +123,18 @@
             android:layout_width="250dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:minHeight="20dp"
             android:progress="50" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearlayout_3"
-        android:layout_width="400dp"
+        android:layout_width="350dp"
         android:layout_height="40dp"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="6dp"
+        android:layout_marginEnd="31dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -143,7 +145,7 @@
             android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:text="6-8 Hrs"
             android:textColor="#2D366C"
             android:textSize="18sp"
@@ -155,7 +157,7 @@
             android:layout_width="250dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:minHeight="20dp"
             android:progress="75" />
     </LinearLayout>
@@ -163,11 +165,11 @@
 
     <LinearLayout
         android:id="@+id/linearlayout_4"
-        android:layout_width="400dp"
+        android:layout_width="350dp"
         android:layout_height="40dp"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="6dp"
+        android:layout_marginEnd="31dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -178,7 +180,7 @@
             android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:text="8-12 Hrs"
             android:textColor="#2D366C"
             android:textSize="18sp"
@@ -190,7 +192,7 @@
             android:layout_width="250dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:minHeight="20dp"
             android:progress="45" />
     </LinearLayout>

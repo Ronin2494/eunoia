@@ -107,7 +107,7 @@
         android:background="@drawable/text_radius"
         android:gravity="start"
         android:hint=" Enter your feelings!"
-        android:padding="5dp"
+        android:padding="10dp"
         android:textAlignment="viewStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
