@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="300dp"
+    android:layout_gravity="center"
+    android:background="@drawable/subscibe"
+    android:backgroundTint="#2D366C">
+
+    <ImageView
+        android:id="@+id/logo_1"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/logo3" />
+
+    <TextView
+        android:id="@+id/subText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logo_1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="10sp"
+        android:paddingTop="5sp"
+        android:paddingRight="10sp"
+        android:paddingBottom="5sp"
+        android:text="To Enjoy Premium features"
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/subscibeButton"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/subText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/round_button2"
+        android:fontFamily="@font/inder"
+        android:gravity="center"
+        android:text="Subscribe Now"
+        android:textAlignment="center"
+        android:textColor="#2D366C"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+
+</RelativeLayout>

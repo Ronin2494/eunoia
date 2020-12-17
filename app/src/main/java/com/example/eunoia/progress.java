@@ -53,7 +53,7 @@ public class progress extends AppCompatActivity implements PopupMenu.OnMenuItemC
 
 
                     case R.id.progress:
-
+                        break;
 
                     case R.id.message:
                         startActivity(new Intent(getApplicationContext(), progress.class));
@@ -63,7 +63,7 @@ public class progress extends AppCompatActivity implements PopupMenu.OnMenuItemC
 
 
                     case R.id.doctor:
-                        startActivity(new Intent(getApplicationContext(), home.class));
+                        startActivity(new Intent(getApplicationContext(), expert.class));
                         finish();
                         overridePendingTransition(0,0);
                         return false;
@@ -94,16 +94,7 @@ public class progress extends AppCompatActivity implements PopupMenu.OnMenuItemC
                 return true;
 
             case R.id.item2:
-                startActivity(new Intent(getApplicationContext(), progress.class));
-                Toast.makeText(this, "Item2 is selected", Toast.LENGTH_SHORT).show();
-                return true;
-
-            case R.id.item3:
-                Toast.makeText(this, "Item3 is selected", Toast.LENGTH_SHORT).show();
-                return true;
-
-            case R.id.item4:
-                Toast.makeText(this, "Item4 is selected", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), userProfile.class));
                 return true;
 
             case R.id.sign_out:

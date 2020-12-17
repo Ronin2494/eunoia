@@ -8,12 +8,13 @@
 
     <ImageView
         android:id="@+id/imageView12"
-        android:layout_width="469dp"
-        android:layout_height="185dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/design1_2" />
+        app:srcCompat="@drawable/design1" />
 
     <ImageView
         android:id="@+id/menu-down"
