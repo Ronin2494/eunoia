@@ -4,6 +4,7 @@ import android.animation.ArgbEvaluator;
 import android.content.Intent;
 import android.database.DataSetObserver;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,7 @@ public class expert extends AppCompatActivity implements PopupMenu.OnMenuItemCli
     DatabaseReference db;
     FirebaseAuth fAuth;
     Button viewProfile;
+    private Boolean exit = false;
 
     /*String[] fName = {"Dr Jordan", "Dr Rose", "Dr Amanda", "Dr Wilson"};
     String[] lName = {"Gilbert", "Parker", "Cerney", "Avenue"};
@@ -59,12 +61,12 @@ public class expert extends AppCompatActivity implements PopupMenu.OnMenuItemCli
 
 
         modelProfiles = new ArrayList<>();
-        modelProfiles.add(new ModelProfile(R.drawable.dr1, "Dr Rose", "Parker", "Waterloo, ON", "Psyhcologist, Phd, CPsych", "Speciality: Anxiety, Depression, PTSD", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"));
-        modelProfiles.add(new ModelProfile(R.drawable.dr2, "Dr Jordan", "Gilbert", "Kitchener, ON", "Psyhcologist, Phd", "Speciality: Anxiety, Depression", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"));
-        modelProfiles.add(new ModelProfile(R.drawable.dr3, "Dr Amanda", "Cerney", "Cambridge, ON", "Psyhcologist, Phd, CPsych", "Speciality: Anxiety, Depression, PTSD", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"));
-        modelProfiles.add(new ModelProfile(R.drawable.dr4, "Dr Wilson", "James", "Toronto, ON", "Psyhcologist, Phd", "Speciality: Anxiety, Depression", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"));
-        modelProfiles.add(new ModelProfile(R.drawable.kate, "Dr Kate", "Spere", "Kitchener, ON", "C.PSYCH, Phd", "Speciality: Anxiety, Depression", "Dr. Spere is passionate about her work and is committed to people reach their full potential. She provides therapy to people for a variety of concerns including anxiety, depression and stress"));
-        modelProfiles.add(new ModelProfile(R.drawable.dr1, "Dr Wilson", "James", "Toronto, ON", "Psyhcologist, Phd", "Speciality: Anxiety, Depression", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"));
+        modelProfiles.add(new ModelProfile(R.drawable.dr1, "Dr Rose", "Parker", "Waterloo, ON", "Psyhcologist, Phd, CPsych", "Speciality: Anxiety, Depression, PTSD", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."));
+        modelProfiles.add(new ModelProfile(R.drawable.kristy, "Dr Boughton", "Kristy", "Kitchener, ON", "Ph.D. in Clinical Psychology", "Speciality: Depression, Behavioural Concerns", "Kristy provides therapy to children and youth experiencing various mental health and behavioural concerns. Kristy has an interest in working with parents to help them support their child."));
+        modelProfiles.add(new ModelProfile(R.drawable.dr3, "Dr Amanda", "Cerney", "Cambridge, ON", "Psyhcologist, Phd, CPsych", "Speciality: Anxiety, Depression, PTSD", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."));
+        modelProfiles.add(new ModelProfile(R.drawable.dr4, "Dr Wilson", "James", "Toronto, ON", "Psyhcologist, Phd", "Speciality: Anxiety, Depression", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."));
+        modelProfiles.add(new ModelProfile(R.drawable.kate1, "Dr Kate", "Spere", "Kitchener, ON", "C.PSYCH, Phd", "Speciality: Anxiety, Depression", "Dr. Spere is passionate about her work and is committed to people reach their full potential. She provides therapy to people for a variety of concerns including anxiety, depression and stress."));
+        modelProfiles.add(new ModelProfile(R.drawable.kristina, "Dr Bevis", "Kristina", "Kitchener, ON", "Psyhcologist, MA, RPQ","Speciality: Anxiety, Depression", "I am a warm, gentle, genuine, accepting, and empathic person. I provide both short and long term therapy, such as up to 20 sessions. I practice exclusively with couples."));
 
 
         db.setValue(modelProfiles);
@@ -74,7 +76,6 @@ public class expert extends AppCompatActivity implements PopupMenu.OnMenuItemCli
             viewPager = findViewById(R.id.viewPager);
             viewPager.setAdapter(adapter);
             viewPager.setPadding(150, 0, 150, 0);
-
 
 
         //Bottom Navigation View to switch between activities
@@ -158,6 +159,24 @@ public class expert extends AppCompatActivity implements PopupMenu.OnMenuItemCli
     }
 
 
+    @Override
+    public void onBackPressed() {
+        if (exit) {
+            finish(); // finish activity
+        } else {
+            Toast.makeText(this, "Press Back again to Exit.",
+                    Toast.LENGTH_SHORT).show();
+            exit = true;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    exit = false;
+                }
+            }, 3 * 1000);
+            System.exit(0);
+
+        }
+    }
 }
 
 

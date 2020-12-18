@@ -3,6 +3,7 @@ package com.example.eunoia;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,6 +21,7 @@ public class progress extends AppCompatActivity implements PopupMenu.OnMenuItemC
 
     FirebaseAuth fAuth;
     float x1, x2, y1, y2;
+    private Boolean exit = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,5 +130,22 @@ public class progress extends AppCompatActivity implements PopupMenu.OnMenuItemC
         return false;
     }
 
+    @Override
+    public void onBackPressed() {
+        if (exit) {
+            finish(); // finish activity
+        } else {
+            Toast.makeText(this, "Press Back again to Exit.",
+                    Toast.LENGTH_SHORT).show();
+            exit = true;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    exit = false;
+                }
+            }, 3 * 1000);
+            System.exit(0);
 
+        }
+    }
 }

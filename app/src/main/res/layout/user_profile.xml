@@ -87,13 +87,15 @@
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:accessibilityHeading="false"
             android:src="@drawable/user_id" />
 
         <TextView
-            android:layout_width="110dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:text="Name"
+            android:textColor="#2D366C"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -101,10 +103,11 @@
             android:id="@+id/accountName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="20dp"
             android:layout_weight="1"
+            android:paddingLeft="5dp"
             android:text="TextView"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
     </LinearLayout>
 
@@ -139,13 +142,14 @@
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/ic_baseline_email_24" />
+            android:src="@drawable/email" />
 
         <TextView
-            android:layout_width="110dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:text="E mail"
+            android:textColor="#2D366C"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -153,10 +157,11 @@
             android:id="@+id/accountEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="20dp"
             android:layout_weight="1"
+            android:paddingLeft="5dp"
             android:text="TextView"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
     </LinearLayout>
 

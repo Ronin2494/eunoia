@@ -164,4 +164,7 @@ public class Activity_routinemeals extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+    }
 }

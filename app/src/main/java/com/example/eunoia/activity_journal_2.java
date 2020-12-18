@@ -80,10 +80,8 @@ public class activity_journal_2 extends AppCompatActivity {
         });
 //read/write code for android*/
     }
+
+    @Override
+    public void onBackPressed() {
+    }
 }
-/*"users": {
-      "$uid": {
-        // grants write access to the owner of this user account
-        // whose uid must exactly match the key ($user_id)
-        ".read": "$uid === auth.uid",
-        ".write": "$uid === auth.uid"*/

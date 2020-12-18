@@ -8,15 +8,20 @@ public class usersfeeling {
 
     private String feeling;
     private String time;
+    private int mood;
 
-
-    public usersfeeling(String feeling, String time) {
+    public usersfeeling(int mood, String feeling, String time) {
+        this.mood = mood;
         this.feeling = feeling;
         this.time = time;
     }
 
     public usersfeeling() {
 
+    }
+
+    public int getMood() {
+        return mood;
     }
 
     public String getFeeling() {

@@ -13,16 +13,20 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
-public class activity_relax extends AppCompatActivity {
+public class activity_relax extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
 
     Button btn1, btn2, btn3;
     ImageView img;
+    FirebaseAuth fAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_relax);
+
+        fAuth = FirebaseAuth.getInstance();
 
         btn1 = findViewById(R.id.button2);
         btn2 = findViewById(R.id.button3);
@@ -99,6 +103,40 @@ public class activity_relax extends AppCompatActivity {
 
     }
 
+    public void showPopup(View v){
 
+        PopupMenu popup = new PopupMenu(this, v);
+        popup.setOnMenuItemClickListener(this);
+        popup.inflate(R.menu.dropdown);
+        popup.show();
+    }
+
+    //Drop down Item Click listener
+    @Override
+    public  boolean onMenuItemClick(MenuItem item){
+        switch (item.getItemId()){
+
+            case R.id.item1:
+                Toast.makeText(this, "Item1 is selected", Toast.LENGTH_SHORT).show();
+                return true;
+
+            case R.id.item2:
+                startActivity(new Intent(getApplicationContext(), userProfile.class));
+                return true;
+
+            case R.id.sign_out:
+                fAuth.signOut();
+                startActivity(new Intent(getApplicationContext(), login.class));
+                finish();
+
+            default:
+                return  super.onOptionsItemSelected(item);
+
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+    }
 
 }

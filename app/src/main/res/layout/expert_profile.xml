@@ -129,7 +129,7 @@
         android:layout_marginEnd="31dp"
         android:padding="5dp"
         android:text="TextView"
-        android:textAlignment="viewStart"
+        android:textAlignment="textStart"
         android:textColor="#2D366C"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"

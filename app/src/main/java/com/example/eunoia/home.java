@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -40,12 +41,14 @@ public class home extends AppCompatActivity implements PopupMenu.OnMenuItemClick
     FirebaseAuth fAuth;
     private String currentUserId;
     Dialog dialog;
+    private Boolean exit = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         FirebaseApp.initializeApp(this);
+
 
 
         seekBar = findViewById(R.id.seekBar);
@@ -132,12 +135,13 @@ public class home extends AppCompatActivity implements PopupMenu.OnMenuItemClick
 
                 feeling1 = new usersfeeling();//object of the class usersfeeling
 
+                int mood = seekBar.getProgress();
                 String description = feel.getEditableText().toString();
                 String time = DateFormat.getDateTimeInstance().format(new Date());
                 //String time2 = time1.replace(",", " ");
                 //String time = time2.replace(":", " ");
 
-                feeling1 = new usersfeeling(description, time);//passing value to feeling1
+                feeling1 = new usersfeeling(mood, description, time);//passing value to feeling1
                 reference.child("Users_Feeling").push().setValue(feeling1);
                 feel.setText("");
                 Toast.makeText(home.this, "Message Submitted", Toast.LENGTH_SHORT).show();
@@ -171,6 +175,7 @@ public class home extends AppCompatActivity implements PopupMenu.OnMenuItemClick
 
             case R.id.item2:
                 startActivity(new Intent(getApplicationContext(), userProfile.class));
+                finish();
                 return true;
 
             case R.id.sign_out:
@@ -182,6 +187,26 @@ public class home extends AppCompatActivity implements PopupMenu.OnMenuItemClick
                 return  super.onOptionsItemSelected(item);
 
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (exit) {
+            finish(); // finish activity
+        } else {
+            Toast.makeText(this, "Press Back again to Exit.",
+                    Toast.LENGTH_SHORT).show();
+            exit = true;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    exit = false;
+                }
+            }, 3 * 1000);
+            System.exit(0);
+
+        }
+
     }
 
 
