@@ -27,4 +27,8 @@ public class breathing extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onBackPressed() {
+    }
 }

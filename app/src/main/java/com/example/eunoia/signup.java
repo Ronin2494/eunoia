@@ -3,6 +3,7 @@ package com.example.eunoia;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,6 +20,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class signup extends AppCompatActivity {
 
     TextView login;
@@ -27,6 +31,17 @@ public class signup extends AppCompatActivity {
     FirebaseAuth fAuth;
     DatabaseReference ref;
     private FirebaseUser user;
+
+    private static final Pattern PASSWORD_PATTERN =
+            Pattern.compile("^" +
+                    "(?=.*[0-9])" +         //at least 1 digit
+                    "(?=.*[a-z])" +         //at least 1 lower case letter
+                    "(?=.*[A-Z])" +         //at least 1 upper case letter
+                    //"(?=.*[a-zA-Z])" +      //any letter
+                    "(?=.*[@#$%^&+=])" +    //at least 1 special character
+                    "(?=\\S+$)" +           //no white spaces
+                    ".{4,}" +               //at least 4 characters
+                    "$");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,24 +75,19 @@ public class signup extends AppCompatActivity {
 
                ref = FirebaseDatabase.getInstance().getReference("users_data");
 
-
                if(TextUtils.isEmpty(name)){
                    username.setError("Username is required");
                    return;
                }
 
-               if(TextUtils.isEmpty(email1)){
-                   email.setError("Email is required");
+               if(TextUtils.isEmpty(email1) && Patterns.EMAIL_ADDRESS.matcher(email1).matches()){
+                   email.setError("Enter a valid email address");
                    return;
                }
 
-               if(TextUtils.isEmpty(password1)){
-                   password.setError("Password is required");
-                   return;
-               }
-
-               if(password1.length() < 6){
-                   password.setError("password must be greater than 6 characters");
+               if(!validatePassword()){
+                   //Toast.makeText(signup.this, "Please enter a valid password with minimum 8 characters", Toast.LENGTH_SHORT).show();
+                   //password.setError("Please enter a valid password with minimum 8 characters");
                    return;
                }
 
@@ -99,10 +109,10 @@ public class signup extends AppCompatActivity {
                                    @Override
                                    public void onComplete(@NonNull Task<Void> task) {
                                        if (task.isSuccessful()) {
-                                           Toast.makeText(signup.this, "Database Saved successfully", Toast.LENGTH_SHORT).show();
+                                           Toast.makeText(signup.this, "Data Saved successfully", Toast.LENGTH_SHORT).show();
                                        }
                                        else{
-                                           Toast.makeText(signup.this, "Database not Saved", Toast.LENGTH_SHORT).show();
+                                           Toast.makeText(signup.this, "Data not Saved", Toast.LENGTH_SHORT).show();
                                        }
                                    }
                                });
@@ -122,6 +132,8 @@ public class signup extends AppCompatActivity {
        });
 
 
+
+
        login.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
@@ -132,4 +144,20 @@ public class signup extends AppCompatActivity {
        });
 
     }
+
+    private boolean validatePassword() {
+        String passwordInput = password.getText().toString().trim();
+        if (passwordInput.isEmpty()) {
+            password.setError("Field can't be empty");
+            return false;
+        } else if (!PASSWORD_PATTERN.matcher(passwordInput).matches()) {
+            password.setError("Password too weak");
+            return false;
+        } else {
+            password.setError(null);
+            return true;
+        }
+    }
+
+
 }

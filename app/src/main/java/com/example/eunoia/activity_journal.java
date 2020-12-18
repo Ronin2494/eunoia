@@ -128,4 +128,9 @@ public class activity_journal extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
 }
